@@ -341,7 +341,8 @@ uint8_t gc_n64_get(uint8_t* buff, uint8_t len,
         // 8ms (Smash Melee), 0.7 - 9ms (GC options), 0.6 - 19 ms (Mario Football)
         // This function will wait for 71.22ms to pull the line low.
         // This way we ensure to catch at least a single gamecube command if connected.
-        "ldi %[initialTimeoutCount],0x00\n" // (1) set the outer timeout
+        // COLEJD NOTE: Disabled following line to prevent slowdown when any ports are enabled but not populated: https://github.com/NicoHood/Nintendo/issues/51
+//         "ldi %[initialTimeoutCount],0x00\n" // (1) set the outer timeout
 
         // Inititally try to read more often to get a longer timeout.
         // This is the first (of two) extre initital loops.
